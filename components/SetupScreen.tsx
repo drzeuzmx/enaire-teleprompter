@@ -19,6 +19,7 @@ interface SetupScreenProps {
   onClearScripts: () => void;
   settings: PrompterSettings;
   onSettingsChange: (patch: Partial<PrompterSettings>) => void;
+  onResetSettings: () => void;
   voiceSupported: boolean;
   onStart: () => void;
   onLogout: () => void;
@@ -38,6 +39,7 @@ export default function SetupScreen({
   onClearScripts,
   settings,
   onSettingsChange,
+  onResetSettings,
   voiceSupported,
   onStart,
   onLogout,
@@ -195,9 +197,13 @@ export default function SetupScreen({
             <SettingsPanel
               settings={settings}
               onChange={onSettingsChange}
+              onReset={onResetSettings}
               voiceSupported={voiceSupported}
             />
           </div>
+          <p className="text-center font-mono text-[10px] text-steel/50">
+            build {(process.env.NEXT_PUBLIC_COMMIT_SHA || "local").slice(0, 7)}
+          </p>
         </aside>
       </main>
     </div>
