@@ -10,6 +10,7 @@ import {
   deleteScript,
   loadScripts,
   loadSettings,
+  resetSettings,
   saveScript,
   saveSettings,
 } from "@/lib/storage";
@@ -59,6 +60,11 @@ export default function Home() {
       saveSettings(next);
       return next;
     });
+  };
+
+  const handleResetSettings = () => {
+    resetSettings();
+    setSettings(DEFAULT_SETTINGS);
   };
 
   const handleImportDoc = async (url: string) => {
@@ -165,6 +171,7 @@ export default function Home() {
       onClearScripts={handleClearScripts}
       settings={settings}
       onSettingsChange={handleSettingsChange}
+      onResetSettings={handleResetSettings}
       voiceSupported={voiceSupported}
       onStart={handleStart}
       onLogout={handleLogout}
