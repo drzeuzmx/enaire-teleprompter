@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #0a0a0c;
+  color: #ededed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Stage scroll area: hide scrollbar visually but keep it scrollable/programmatic */
+.stage-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.stage-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.mirror-h {
+  transform: scaleX(-1);
+}
+.mirror-v {
+  transform: scaleY(-1);
+}
+.mirror-hv {
+  transform: scale(-1, -1);
+}
+
+.script-word {
+  transition: color 120ms ease, opacity 120ms ease;
+}
+
+.script-word.active {
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+}
+
+::selection {
+  background-color: #2be4a6;
+  color: #0a0a0c;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: #1f1f24;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #2be4a6;
+  cursor: pointer;
+  margin-top: -5px;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 999px;
+  background: #2be4a6;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: #1f1f24;
+}
