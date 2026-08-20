@@ -7,6 +7,7 @@ interface SettingsPanelProps {
   onChange: (patch: Partial<PrompterSettings>) => void;
   voiceSupported: boolean;
   compact?: boolean;
+  onReset?: () => void;
 }
 
 const LANGS: { value: DictationLang; label: string }[] = [
@@ -92,7 +93,7 @@ function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: 
   );
 }
 
-export default function SettingsPanel({ settings, onChange, voiceSupported, compact }: SettingsPanelProps) {
+export default function SettingsPanel({ settings, onChange, voiceSupported, compact, onReset }: SettingsPanelProps) {
   return (
     <div className={`space-y-5 ${compact ? "" : ""}`}>
       <Field label="Modo de desplazamiento">
@@ -243,6 +244,16 @@ export default function SettingsPanel({ settings, onChange, voiceSupported, comp
           </Field>
         </div>
       </details>
+
+      {onReset && (
+        <button
+          type="button"
+          onClick={onReset}
+          className="w-full rounded-lg border border-tally/30 py-2 text-[12px] text-tally/90 hover:bg-tally/10"
+        >
+          Restablecer ajustes a los valores de fábrica
+        </button>
+      )}
     </div>
   );
 }
