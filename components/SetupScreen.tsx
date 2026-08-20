@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FileText, Link2, Mic, Play, Trash2, X } from "lucide-react";
+import { FileText, Link2, LogOut, Mic, Play, Trash2, X } from "lucide-react";
 import { PrompterSettings, SavedScript } from "@/lib/types";
 import SettingsPanel from "./SettingsPanel";
 
@@ -21,6 +21,7 @@ interface SetupScreenProps {
   onSettingsChange: (patch: Partial<PrompterSettings>) => void;
   voiceSupported: boolean;
   onStart: () => void;
+  onLogout: () => void;
 }
 
 export default function SetupScreen({
@@ -39,6 +40,7 @@ export default function SetupScreen({
   onSettingsChange,
   voiceSupported,
   onStart,
+  onLogout,
 }: SetupScreenProps) {
   const [docUrl, setDocUrl] = useState("");
 
@@ -66,9 +68,19 @@ export default function SetupScreen({
               En<span className="text-signal">Aire</span>
             </span>
           </div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-steel">
-            Teleprompter por voz
-          </span>
+          <div className="flex items-center gap-4">
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-steel">
+              Teleprompter por voz
+            </span>
+            <button
+              onClick={onLogout}
+              title="Cerrar sesión"
+              className="flex items-center gap-1.5 text-[11px] text-steel/80 hover:text-tally"
+            >
+              <LogOut size={13} />
+              Salir
+            </button>
+          </div>
         </div>
       </header>
 
